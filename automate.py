@@ -10,6 +10,7 @@ for model in models:
     directory = natsorted(directory)
     img_array = []
     for filename in directory:
+        print(path + '/' + filename)
         img = cv2.imread(path + '/' + filename)
         height, width, layers = img.shape
         size = (width,height)
