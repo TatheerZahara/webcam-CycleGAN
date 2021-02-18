@@ -7,6 +7,7 @@ path = r"/home/ben/gans_git/pytorch-CycleGAN-and-pix2pix/results/style_vangogh_p
 directory  = os.listdir(path)
 directory = natsorted(directory)
 img_array = []
+print(directory)
 for filename in directory:
     img = cv2.imread(path + '/' + filename)
     height, width, layers = img.shape
