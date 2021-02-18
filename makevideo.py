@@ -9,7 +9,9 @@ directory = natsorted(directory)
 img_array = []
 print(directory)
 for filename in directory:
+    print(path + '/' + filename)
     img = cv2.imread(path + '/' + filename)
+    print(img)
     height, width, layers = img.shape
     size = (width,height)
     img_array.append(img)
