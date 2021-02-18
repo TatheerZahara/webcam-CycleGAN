@@ -1,5 +1,6 @@
 import os 
 from natsort import natsorted
+import cv2
 models = ['style_cezanne_pretrained', 'style_monet_pretrained',  'style_ukiyoe_pretrained',  'style_vangogh_pretrained']
 #run on rocky mountain dataset
 for model in models:
@@ -14,9 +15,10 @@ for model in models:
         size = (width,height)
         img_array.append(img)
 
-
+    print("Writing video...")
     out = cv2.VideoWriter(model + '.avi',cv2.VideoWriter_fourcc(*'DIVX'), 30, size)
     
     for i in range(len(img_array)):
         out.write(img_array[i])
     out.release()
+    print("Written!")
