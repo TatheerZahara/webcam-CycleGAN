@@ -3,7 +3,7 @@ from natsort import natsorted
 models = ['style_cezanne_pretrained', 'style_monet_pretrained',  'style_ukiyoe_pretrained',  'style_vangogh_pretrained']
 #run on rocky mountain dataset
 for model in models:
-    os.system('python test.py --dataroot ./datasets/rocky --name ' +  model + ' --model test --dataset_mode single --preprocess none --no_dropout --num_test 373')
+    os.system('python test.py --dataroot ./datasets/rocky --name ' +  model + ' --model test --dataset_mode single --preprocess none --no_dropout --num_test 5')
     path = r'/home/ben/gans_git/pytorch-CycleGAN-and-pix2pix/results/' + model + '/test_latest/images'
     directory  = os.listdir(path)
     directory = natsorted(directory)
