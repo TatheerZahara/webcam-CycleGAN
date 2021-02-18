@@ -1,4 +1,5 @@
 import os 
+from natsort import natsorted
 models = ['style_cezanne_pretrained', 'style_monet_pretrained',  'style_ukiyoe_pretrained',  'style_vangogh_pretrained']
 #run on rocky mountain dataset
 for model in models:
