@@ -9,7 +9,5 @@ An implementation of CycleGAN written and designed by [Jun-Yan Zhu](https://gith
 
 
 
-**CycleGAN: [Project](https://junyanz.github.io/CycleGAN/) |  [Paper](https://arxiv.org/pdf/1703.10593.pdf) |  [Torch](https://github.com/junyanz/CycleGAN) |
+**For more information on CycleGAN, and to see the wonderful work of the original creators: [Project](https://junyanz.github.io/CycleGAN/) |  [Paper](https://arxiv.org/pdf/1703.10593.pdf) |  [Torch](https://github.com/junyanz/CycleGAN) |
 [Tensorflow Core Tutorial](https://www.tensorflow.org/tutorials/generative/cyclegan) | [PyTorch Colab](https://colab.research.google.com/github/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/CycleGAN.ipynb)**
-
-<img src="https://junyanz.github.io/CycleGAN/images/teaser_high_res.jpg" width="800"/>
