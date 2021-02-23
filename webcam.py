@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # Check if the webcam is opened correctly
     if not webcam.isOpened():
         raise IOError("Cannot open webcam")
-
+    
     #cycling through filter set up
     style_models = ['style_monet_pretrained', 'style_vangogh_pretrained', 'style_ukiyoe_pretrained', 'style_cezanne_pretrained']
     style_model_index = 0
