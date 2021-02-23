@@ -3,7 +3,7 @@
 
 <br><br><br>
 
-# Using CycleGAN to perform realtime style transfer on webcam feed.
+# Using CycleGAN to perform realtime style transfer on webcam feed
 
 **New**:  Please check out [contrastive-unpaired-translation](https://github.com/taesungp/contrastive-unpaired-translation) (CUT), our new unpaired image-to-image translation model that enables fast and memory-efficient training.
 
