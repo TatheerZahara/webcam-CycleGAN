@@ -1,5 +1,8 @@
-
-<img src='imgs/webcamdemo.gif' align="center" width=384>
+<figure>
+  <img src='imgs/webcamdemo.gif' align="center" width=300>
+  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+ </figure>
+ 
 
 <br><br><br>
 
