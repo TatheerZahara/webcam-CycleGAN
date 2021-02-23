@@ -1,6 +1,6 @@
 <figure>
   <img src='imgs/webcamdemo.gif' align="center" width=300>
-  <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+  <figcaption>Styelized dancing with some fruits</figcaption>
  </figure>
  
 
