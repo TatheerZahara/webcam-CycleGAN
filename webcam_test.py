@@ -31,6 +31,9 @@ from options.test_options import TestOptions
 from data import create_dataset
 from models import create_model
 import cv2
+import torch
+import numpy as np
+from util import util
 
 
 if __name__ == '__main__':
@@ -41,35 +44,85 @@ if __name__ == '__main__':
     opt.serial_batches = True  # disable data shuffling; comment this line if results on randomly chosen images are needed.
     opt.no_flip = True    # no flip; comment this line if results on flipped images are needed.
     opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
+    print(opt.name)
     model = create_model(opt)      # create a model given opt.model and other options
     model.setup(opt)               # regular setup: load and print networks; create schedulers
-
-    #start video
-    cap = cv2.VideoCapture(0)
-
+    if opt.eval:
+        model.eval()
+    
+    #start video/webcamsetup
+    webcam = cv2.VideoCapture(0)
     # Check if the webcam is opened correctly
-    if not cap.isOpened():
+    if not webcam.isOpened():
         raise IOError("Cannot open webcam")
 
+    #cycling through filter set up
+    style_models = ['style_monet_pretrained', 'style_vangogh_pretrained', 'style_ukiyoe_pretrained', 'style_cezanne_pretrained']
+    style_model_index = 0
+
+    #text set up
+    # font 
+    font = cv2.FONT_HERSHEY_SIMPLEX 
+    # org 
+    org = (0, 25) 
+    # fontScale 
+    fontScale = 1
+    # Blue color in BGR 
+    color = (255, 255, 255) 
+    # Line thickness of 2 px 
+    thickness = 2
+
+
+    #the CycleGan takes data as a dictionary
+    #easier to work within that constraint than to reright
     # start an infinite loop and keep reading frames from the webcam until we encounter a keyboard interrupt
+    data = {"A": None, "A_paths": None}
     while True:
 
         #ret is bool returned by cap.read() -> whether or not frame was captured succesfully
         #if captured correctly, store in frame
-        ret, frame = cap.read()
+        ret, frame = webcam.read()
 
         #resize frame and show it
-        frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-        model.set_input(frame)
-        frame = model.test()
+        frame = cv2.resize(frame, (256,256), interpolation=cv2.INTER_AREA)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-        cv2.imshow('Input', frame)
+        #model wants batchsize * channels * h * w
+        #gives it a dimension for batch size
+        frame = np.array([frame])
+        #now shape is batchsize * channels * h * w
+        frame = frame.transpose([0,3,1,2])
+
+        #convert numpy array to tensor
+        #need data to be a tensor for compatability with running model. expects floatTensors
+        data['A'] = torch.FloatTensor(frame)
+        
+        model.set_input(data)  # unpack data from data loader
+        model.test()
+
+        #get only generated image - indexing dictionary for "fake" key
+        result_image = model.get_current_visuals()['fake']
+        #use tensor2im provided by util file
+        result_image = util.tensor2im(result_image)
+        result_image = cv2.cvtColor(np.array(result_image), cv2.COLOR_BGR2RGB)  
+        result_image = cv2.resize(result_image, (512, 512))      
+        result_image = cv2.putText(result_image, str(opt.name)[6:-11], org, font,  
+                   fontScale, color, thickness, cv2.LINE_AA)   
+        cv2.imshow('style', result_image)
 
         #ASCII value of Esc is 27.
         c = cv2.waitKey(1)
         if c == 27:
             break
-
+        if c == 99:
+            if style_model_index == len(style_models):
+                style_model_index = 0
+            opt.name = style_models[style_model_index]
+            style_model_index += 1
+            model = create_model(opt)      # create a model given opt.model and other options
+            model.setup(opt) 
+      
+        
     cap.release()
     cv2.destroyAllWindows()
         
