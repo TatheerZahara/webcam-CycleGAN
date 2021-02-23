@@ -4,7 +4,7 @@
  </figure>
  
 
-<br><br><br>
+<br>
 
 # Using CycleGAN to perform realtime style transfer on webcam feed
 
