@@ -1,5 +1,5 @@
 
-<img src='imgs/webcamdemo.gif' align="right" width=384>
+<img src='imgs/webcamdemo.gif' align="middle width=384>
 
 <br><br><br>
 
