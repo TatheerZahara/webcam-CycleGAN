@@ -5,7 +5,7 @@
 
 # Using CycleGAN to perform realtime style transfer on webcam feed
 
-An implementation of CycleGAN written and designed by [Jun-Yan Zhu](https://github.com/junyanz) and [Taesung Park](https://github.com/taesungp) to apply Monet, Vangogh, Cezanne, and Ukiyo-e to your webcam feed. I describe the intuition and architecture of CycleGAN, while also providing a tutorial of how to code in the webcam compatability.
+An implementation of CycleGAN written and designed by [Jun-Yan Zhu](https://github.com/junyanz) and [Taesung Park](https://github.com/taesungp) to apply Monet, Vangogh, Cezanne, and Ukiyo-e artistic styles to your webcam feed. I describe the intuition and architecture of CycleGAN, while also providing a tutorial of how to code in the webcam compatability.
 
 
 
