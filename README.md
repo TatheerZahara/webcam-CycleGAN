@@ -1,6 +1,6 @@
 <figure>
   <img src='imgs/webcamdemo.gif' align="center" width=300>
-  <figcaption>Style-ized dancing with some fruits</figcaption>
+  <figcaption>Stylized dancing with some fruits</figcaption>
  </figure>
  
 
