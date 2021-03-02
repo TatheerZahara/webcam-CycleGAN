@@ -33,7 +33,6 @@ from models import create_model
 import cv2
 import torch
 import numpy as np
-from util import util
 
 
 if __name__ == '__main__':
@@ -44,7 +43,6 @@ if __name__ == '__main__':
     opt.serial_batches = True  # disable data shuffling; comment this line if results on randomly chosen images are needed.
     opt.no_flip = True    # no flip; comment this line if results on flipped images are needed.
     opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
-    print(opt.name)
     model = create_model(opt)      # create a model given opt.model and other options
     model.setup(opt)               # regular setup: load and print networks; create schedulers
     if opt.eval:
@@ -83,7 +81,7 @@ if __name__ == '__main__':
         #if captured correctly, store in frame
         ret, frame = webcam.read()
 
-        #resize frame and show it
+        #resize frame
         frame = cv2.resize(frame, (256,256), interpolation=cv2.INTER_AREA)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
